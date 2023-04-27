@@ -20,8 +20,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import store from "./app/store";
 
 import SplashScreen from "./screens/onboarding/SplashScreen/index";
-import OnBoardingScreen from "./screens/onboarding/OnBoardingScreen/index";
-
+import LoginScreen from "./screens/authentication/login/LoginScreen/index";
+import OnBoardingScreen from "./screens/onboarding/OnBoardingScreen";
 const Stack = createStackNavigator();
 
 const config = {
@@ -103,6 +103,11 @@ function Navigation() {
           options={{ headerShown: false }}
           name="OnBoardingScreen"
           component={OnBoardingScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="LoginScreen"
+          component={LoginScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
