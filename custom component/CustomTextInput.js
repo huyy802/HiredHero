@@ -1,15 +1,7 @@
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
 import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/core";
-
+import { Text, TextInput, View, StyleSheet, Dimensions } from "react-native";
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
 const CustomTextInput = ({
   onChangeText,
   iconPosition,
@@ -20,9 +12,10 @@ const CustomTextInput = ({
   error = "",
   blurColor,
   paddingVertical,
+
   ...props
 }) => {
-  const [focused, setFocused] = React.useState(false);
+  const [focused, setFocused] = useState(false);
   const getFlexDirection = () => {
     if (icon && iconPosition) {
       if (iconPosition === "left") {
@@ -31,6 +24,7 @@ const CustomTextInput = ({
         return "row-reverse";
       }
     }
+    return "row";
   };
 
   const getBorderColor = () => {
@@ -41,24 +35,28 @@ const CustomTextInput = ({
     if (focused) {
       return blurColor;
     } else {
-      return "white";
+      return "rgba(0, 0, 0, 0.1)";
     }
   };
+
   return (
-    <View style={{ paddingVertical: paddingVertical }}>
-      {label && <Text>{label}</Text>}
+    <View style={styles.container}>
+      {label && <Text style={styles.label}>{label}</Text>}
 
       <View
         style={[
           styles.wrapper,
-          { alignItems: icon ? "center" : "baseline" },
-          { borderColor: getBorderColor(), flexDirection: getFlexDirection() },
+          {
+            borderColor: getBorderColor(),
+            flexDirection: getFlexDirection(),
+          },
+          style,
         ]}
       >
         <View>{icon && icon}</View>
 
         <TextInput
-          style={[styles.textInput, style]}
+          style={[styles.textInput]}
           onChangeText={onChangeText}
           value={value}
           onFocus={() => {
@@ -71,45 +69,49 @@ const CustomTextInput = ({
         />
       </View>
 
-      <Text style={styles.error}>{error}</Text>
+      {error ? <Text style={styles.error}>{error}</Text> : null}
     </View>
   );
 };
 
-export default CustomTextInput;
-
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingHorizontal: 15,
-    marginTop: 15,
-
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-
-    elevation: 15,
-
-    width: 300,
-    height: 50,
-    backgroundColor: "#FFFCFB",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    borderRadius: 13,
-    borderWidth: 1,
+  container: {
+    paddingVertical: height * 0.01,
+    alignItems: "center",
   },
-
+  label: {
+    color: "#000",
+    fontSize: 16,
+    fontWeight: "bold",
+    marginLeft: 10,
+  },
+  wrapper: {
+    position: "relative",
+    alignItems: "center",
+    width: width * 0.9,
+    height: height * 0.06,
+    backgroundColor: "#FFF",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "rgba(0, 0, 0, 0.1)",
+    borderRadius: 30,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 20 },
+    shadowOpacity: 0.1,
+    shadowRadius: 30,
+    elevation: 15,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
   textInput: {
     flex: 1,
-    width: "100%",
+    color: "#000",
   },
-
   error: {
     color: "red",
     paddingTop: 4,
     fontSize: 12,
   },
 });
+
+export default CustomTextInput;

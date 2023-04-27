@@ -11,7 +11,7 @@ import {
   Dimensions,
   LogBox,
 } from "react-native";
-import Colors from "../../../assets/Color";
+import Colors from "../../../assets/Colors";
 import styles from "./style";
 import appLogo from "../../../assets/images/app-logo.png";
 const { width, height } = Dimensions.get("window");
@@ -43,7 +43,7 @@ const Slide = ({ item }) => {
           height: "50%",
           width: width,
           resizeMode: "contain",
-          marginTop: height*0.1,
+          marginTop: height * 0.1,
         }}
       />
       <View>
@@ -119,7 +119,7 @@ const OnBoardingScreen = ({ navigation }) => {
             <View style={{ height: 50 }}>
               <TouchableOpacity
                 style={styles.btn}
-                onPress={() => navigation.replace("Login")}
+                onPress={() => navigation.replace("LoginScreen")}
               >
                 <Text
                   style={{ fontWeight: "bold", fontSize: 15, color: "white" }}
