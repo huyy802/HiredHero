@@ -20,10 +20,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import store from "./app/store";
 
 import SplashScreen from "./screens/onboarding/SplashScreen/index";
-import OnBoardingScreen from "./screens/onboarding/OnBoardingScreen/index";
-import HomeScreen from "./screens/home/index"
-import JobDetailScreen from "./screens/jobdetail/index"
-
+import LoginScreen from "./screens/authentication/login/LoginScreen/index";
+import OnBoardingScreen from "./screens/onboarding/OnBoardingScreen";
 const Stack = createStackNavigator();
 
 const config = {
@@ -96,7 +94,7 @@ function Navigation() {
           gestureDirection: "horizontal",
         }}
       >
-        {/* <Stack.Screen
+        <Stack.Screen
           options={{ headerShown: false }}
           name="SplashScreen"
           component={SplashScreen}
@@ -105,16 +103,11 @@ function Navigation() {
           options={{ headerShown: false }}
           name="OnBoardingScreen"
           component={OnBoardingScreen}
-        /> */}
-        {/* <Stack.Screen
-          options={{ headerShown: false }}
-          name="HomeScreen"
-          component={HomeScreen}
-        /> */}
+        />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="JobDetailScreen"
-          component={JobDetailScreen}
+          name="LoginScreen"
+          component={LoginScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
