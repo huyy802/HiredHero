@@ -16,5 +16,5 @@ export default {
   white: "#FFFFFF",
   black: "#000000",
   lightBlack:"#2C3A4B",
-  lightBlue:"#F4F6F9"
+  lightBlue:"#F4F6F9",
 };
