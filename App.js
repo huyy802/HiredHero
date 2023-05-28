@@ -22,6 +22,7 @@ import store from "./app/store";
 import SplashScreen from "./screens/onboarding/SplashScreen/index";
 import LoginScreen from "./screens/authentication/login/LoginScreen/index";
 import OnBoardingScreen from "./screens/onboarding/OnBoardingScreen";
+import HomeScreen from "./screens/home/HomeScreen";
 const Stack = createStackNavigator();
 
 const config = {
@@ -96,6 +97,11 @@ function Navigation() {
       >
         <Stack.Screen
           options={{ headerShown: false }}
+          name="HomeScreen"
+          component={HomeScreen}
+        />
+        {/* <Stack.Screen
+          options={{ headerShown: false }}
           name="SplashScreen"
           component={SplashScreen}
         />
@@ -108,7 +114,7 @@ function Navigation() {
           options={{ headerShown: false }}
           name="LoginScreen"
           component={LoginScreen}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

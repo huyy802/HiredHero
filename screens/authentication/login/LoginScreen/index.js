@@ -20,7 +20,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Colors from "../../../../assets/Colors";
 import { useNavigation } from "@react-navigation/core";
-import logo from "../../../../assets/images/app-logo.png";
+import logo from "../../../../assets/images/app_logo.png";
 import CustomTextInput from "../../../../custom component/CustomTextInput";
 import CustomButton from "../../../../custom component/CustomButton";
 import CustomLoginMethodContainer from "../../../../custom component/CustomLoginMethod";
