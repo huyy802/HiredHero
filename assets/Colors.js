@@ -12,7 +12,7 @@ export default {
   RosePink: "#FC69CD",
   lightGray: "#D3D3D3",
   black: "0xFF000000",
-  backgroundColor: "#F5F5F5",
+  backgroundColor: "##F5F5F5",
   white: "#FFFFFF",
   black: "#000000",
 };

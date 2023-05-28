@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import Colors from "../../../assets/Colors";
 import styles from "./style";
-import appLogo from "../../../assets/images/app-logo.png";
+import appLogo from "../../../assets/images/app_logo.png";
 const { width, height } = Dimensions.get("window");
 
 const slides = [

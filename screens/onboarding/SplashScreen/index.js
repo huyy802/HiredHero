@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import LottieView from "lottie-react-native";
 import background from "../../../assets/images/background.png";
-import logo from "../../../assets/images/app-logo.png";
+import logo from "../../../assets/images/app_logo.png";
 import styles from "./style";
 
 const windowWidth = Dimensions.get("screen").width;
