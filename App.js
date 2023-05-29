@@ -24,6 +24,7 @@ import LoginScreen from "./screens/authentication/login/LoginScreen/index";
 import OnBoardingScreen from "./screens/onboarding/OnBoardingScreen";
 import CustomerScreen from "./screens/customer/index";
 
+import HomeScreen from "./screens/home/HomeScreen";
 const Stack = createStackNavigator();
 
 const config = {
@@ -98,6 +99,11 @@ function Navigation() {
       >
         {/* <Stack.Screen
           options={{ headerShown: false }}
+          name="HomeScreen"
+          component={HomeScreen}
+        />
+        {/* <Stack.Screen
+          options={{ headerShown: false }}
           name="SplashScreen"
           component={SplashScreen}
         />
@@ -116,6 +122,7 @@ function Navigation() {
           name="CustomerScreen"
           component={CustomerScreen}
         />
+
 
       </Stack.Navigator>
     </NavigationContainer>
