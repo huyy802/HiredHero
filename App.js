@@ -99,6 +99,11 @@ function Navigation() {
       >
         {/* <Stack.Screen
           options={{ headerShown: false }}
+          name="LoginScreen"
+          component={LoginScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
           name="HomeScreen"
           component={HomeScreen}
         />
@@ -111,11 +116,6 @@ function Navigation() {
           options={{ headerShown: false }}
           name="OnBoardingScreen"
           component={OnBoardingScreen}
-        />
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="LoginScreen"
-          component={LoginScreen}
         /> */}
         <Stack.Screen
           options={{ headerShown: false }}

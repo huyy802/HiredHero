@@ -24,6 +24,8 @@ import logo from "../../../../assets/images/app_logo.png";
 import CustomTextInput from "../../../../custom component/CustomTextInput";
 import CustomButton from "../../../../custom component/CustomButton";
 import CustomLoginMethodContainer from "../../../../custom component/CustomLoginMethod";
+import { useDispatch } from "react-redux";
+import { getAPIActionJSON } from "../../../../api/ApiActions";
 // import eye from "../../../../assets/icons/eye.png";
 // import hidden from "../../../../assets/icons/close-eye.png";
 // import Colors from "../../../../assets/Colors";
@@ -42,7 +44,33 @@ const LoginScreen = () => {
   const buttonColor = email !== "" && password !== "" ? "#000000" : "#C9C9C9";
   const isButtonDisabled = email === "" || password === "";
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+
+  const handleResponse = (response) => {
+    if (!response.success) {
+      Alert.alert(response.message);
+      console.log(response.message);
+      return;
+    }
+    navigation.navigate("HomeScreen");
+  };
+
+  const handleLogin = async () => {
+    // Passing configuration object to axios
+    dispatch(
+      getAPIActionJSON(
+        "loginUser",
+        {
+          email: email,
+          password: password,
+        },
+        null,
+        "",
+        (e) => handleResponse(e)
+      )
+    );
+  };
   return (
     <ScrollView>
       <TouchableWithoutFeedback onPress={dismissKeyboard}>
@@ -98,11 +126,11 @@ const LoginScreen = () => {
             </TouchableOpacity>
             <Text style={styles.rememberMeText}>Remember me</Text>
           </View>
+
+          {/* Login button section  */}
           <CustomButton
             title="Sign In"
-            onPress={() => {
-              // handle sign in logic here
-            }}
+            onPress={handleLogin}
             buttonColor={buttonColor}
             borderRadius={30}
             textColor="#FFFFFF"
