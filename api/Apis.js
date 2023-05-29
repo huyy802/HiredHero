@@ -1,6 +1,6 @@
 export const getAPIs = {
   loginUser: {
-    name: "login",
+    name: "loginUser",
     path: "/api/auth/loginUser",
     method: "POST",
   },
