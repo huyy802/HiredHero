@@ -17,7 +17,7 @@ export default function SettingReducer(state = initialState, action) {
         ...state,
         loading: false,
       };
-    
+
     case "switchTheme":
       if (state.theme === lightTheme) {
         return {
