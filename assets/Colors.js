@@ -17,4 +17,7 @@ export default {
   backgroundColor: "#F5F5F5",
   white: "#FFFFFF",
   black: "#000000",
+
+  primary_kolonie: "#015F4F",
+  light_green: "#D7E4DD",
 };
