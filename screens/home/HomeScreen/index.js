@@ -10,6 +10,7 @@ import CustomJobCard from "../../../custom component/CustomJobCard.js";
 import * as Animatable from "react-native-animatable";
 import { useDispatch } from "react-redux";
 import { getAPIActionJSON } from "../../../api/ApiActions.js";
+import CustomBottomNavigation from "../../../custom component/CustomBottomNavigation.js";
 
 const filterOptions = ["All", "IT", "Finance", "Another Option"]; // Add your filter options here
 
@@ -50,7 +51,7 @@ const HomeScreen = () => {
     setSearchQuery(query);
   };
 
-  const filteredData = dataset.filter(
+  const filteredData = jobData.filter(
     (item) =>
       (selectedOption === "All" || item.industry === selectedOption) &&
       (searchQuery === "" ||
@@ -133,6 +134,9 @@ const HomeScreen = () => {
           />
         )}
       />
+      <View style={styles.bottomNavigationContainer}>
+        <CustomBottomNavigation />
+      </View>
     </SafeAreaView>
   );
 };

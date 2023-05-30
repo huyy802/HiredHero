@@ -27,7 +27,7 @@ export function getAPIActionJSON(
         console.log(type, response.data);
         if (response.status === 200) {
           dispatch({
-            type: `${type}.reply`, /// login.reply
+            type: `${type}.reply`, /// loginUser.reply
             data: response.data,
             headers: response.headers,
           });
