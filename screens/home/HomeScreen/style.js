@@ -4,8 +4,12 @@ import colors from "../../../assets/Colors.js";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 export const styles = StyleSheet.create({
+  bottomNavigationContainer: {
+    alignItems: "center",
+  },
   screen: {
     backgroundColor: colors.white,
+
     flex: 1,
   },
   separatorComponent: {
