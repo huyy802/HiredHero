@@ -22,6 +22,8 @@ import store from "./app/store";
 import SplashScreen from "./screens/onboarding/SplashScreen/index";
 import LoginScreen from "./screens/authentication/login/LoginScreen/index";
 import OnBoardingScreen from "./screens/onboarding/OnBoardingScreen";
+import CustomerScreen from "./screens/customer/index";
+
 import HomeScreen from "./screens/home/HomeScreen";
 const Stack = createStackNavigator();
 
@@ -95,7 +97,7 @@ function Navigation() {
           gestureDirection: "horizontal",
         }}
       >
-        <Stack.Screen
+        {/* <Stack.Screen
           options={{ headerShown: false }}
           name="LoginScreen"
           component={LoginScreen}
@@ -115,6 +117,13 @@ function Navigation() {
           name="OnBoardingScreen"
           component={OnBoardingScreen}
         /> */}
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="CustomerScreen"
+          component={CustomerScreen}
+        />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
