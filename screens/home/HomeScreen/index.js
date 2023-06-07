@@ -11,6 +11,7 @@ import * as Animatable from "react-native-animatable";
 import { useDispatch } from "react-redux";
 import { getAPIActionJSON } from "../../../api/ApiActions.js";
 import { createStackNavigator } from '@react-navigation/stack';
+import CustomBottomNavigation from "../../../custom component/CustomBottomNavigation.js";
 
 const filterOptions = ["All", "IT", "Finance", "Another Option"]; // Add your filter options here
 
@@ -49,7 +50,7 @@ const HomeScreen = ({navigation}) => {
     setSearchQuery(query);
   };
 
-  const filteredData = dataset.filter(
+  const filteredData = jobData.filter(
     (item) =>
       (selectedOption === "All" || item.industry === selectedOption) &&
       (searchQuery === "" ||
@@ -142,6 +143,9 @@ const HomeScreen = ({navigation}) => {
           />
         )}
       />
+      <View style={styles.bottomNavigationContainer}>
+        <CustomBottomNavigation />
+      </View>
     </SafeAreaView>
   );
 };
