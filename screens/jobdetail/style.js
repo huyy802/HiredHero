@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import colors from "../../assets/Color"
+import Colors from "../../assets/Colors"
 
 const styles = StyleSheet.create({
     requirement: {
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         padding: 15,
         paddingStart: 25,
         paddingEnd: 25, 
-        backgroundColor: colors.lightBlue,
+        backgroundColor: Colors.lightBlue,
         borderRadius: 10,
         flexDirection: "row"
     }

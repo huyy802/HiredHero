@@ -25,6 +25,8 @@ import OnBoardingScreen from "./screens/onboarding/OnBoardingScreen";
 import CustomerScreen from "./screens/customer/index";
 
 import HomeScreen from "./screens/home/HomeScreen";
+import JobDetailScreen from "./screens/jobdetail";
+
 const Stack = createStackNavigator();
 
 const config = {
@@ -101,12 +103,18 @@ function Navigation() {
           options={{ headerShown: false }}
           name="LoginScreen"
           component={LoginScreen}
-        />
+        /> */}
         <Stack.Screen
           options={{ headerShown: false }}
           name="HomeScreen"
           component={HomeScreen}
+        /> 
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="JobDetailScreen"
+          component={JobDetailScreen}
         />
+        
         {/* <Stack.Screen
           options={{ headerShown: false }}
           name="SplashScreen"
@@ -116,12 +124,12 @@ function Navigation() {
           options={{ headerShown: false }}
           name="OnBoardingScreen"
           component={OnBoardingScreen}
-        /> */}
-        <Stack.Screen
+        />
+        {/* <Stack.Screen
           options={{ headerShown: false }}
           name="CustomerScreen"
           component={CustomerScreen}
-        />
+        /> */}
 
 
       </Stack.Navigator>
