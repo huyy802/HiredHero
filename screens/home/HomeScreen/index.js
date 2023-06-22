@@ -10,6 +10,7 @@ import CustomJobCard from "../../../custom component/CustomJobCard.js";
 import * as Animatable from "react-native-animatable";
 import { useDispatch } from "react-redux";
 import { getAPIActionJSON } from "../../../api/ApiActions.js";
+import { createStackNavigator } from '@react-navigation/stack';
 import CustomBottomNavigation from "../../../custom component/CustomBottomNavigation.js";
 
 const filterOptions = ["All", "IT", "Finance", "Another Option"]; // Add your filter options here
@@ -17,7 +18,7 @@ const filterOptions = ["All", "IT", "Finance", "Another Option"]; // Add your fi
 const SeparatorComponent = () => {
   return <View style={styles.separatorComponent} />;
 };
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
   // const state = useSelector((state) => state);
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,8 +32,6 @@ const HomeScreen = () => {
       return;
     }
     setJobData(response.message);
-    console.log("zeessss");
-    console.log(jobData);
   };
   const getData = () => {
     dispatch(
@@ -57,6 +56,15 @@ const HomeScreen = () => {
       (searchQuery === "" ||
         item.jobName.toLowerCase().includes(searchQuery.toLowerCase()))
   );
+
+  const handlePressJob = async (event, item) => {
+    
+    // dispatch(
+    //   getAPIActionJSON("getJob", null, item, "", (e) => handleResponse(e))
+    // );
+
+    // navigation.navigate('JobDetailScreen', { job: item })
+  }
 
   const toggleFilterOptions = () => {
     if (showFilterOptions) {
@@ -123,7 +131,8 @@ const HomeScreen = () => {
         style={styles.listContainer}
         data={jobData}
         renderItem={({ item }) => (
-          <CustomJobCard
+          <CustomJobCard       
+            onPress = {() =>{ navigation.navigate('JobDetailScreen', { job: item }) }}
             nameJob={item.jobTitle}
             companyName={item.company.companyName}
             location={item.location}

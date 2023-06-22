@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 
 const CustomJobCard = ({
+  onPress,
   nameJob,
   companyName,
   location,
@@ -18,7 +19,7 @@ const CustomJobCard = ({
   };
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.imageContainer}>
         <Image source={imagePath} style={styles.image} />
       </View>
@@ -41,7 +42,7 @@ const CustomJobCard = ({
         </TouchableOpacity>
         <Text style={styles.salary}>${salary}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

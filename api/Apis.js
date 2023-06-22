@@ -9,4 +9,9 @@ export const getAPIs = {
     path: "/api/job/getAllJobs",
     method: "GET",
   },
+  getJob: {
+    name: "getJob",
+    path: "/api/job/getJob",
+    method: "GET",
+  },
 };

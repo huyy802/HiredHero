@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Image, Text } from "react-native";
-import colors from "../assets/Color"
+import Colors from "../assets/Colors"
 //props: logo, jobTitle, country, typeWork, isMark, salary
 const JobTag = (props) => {
     return(
