@@ -26,6 +26,9 @@ import CustomerScreen from "./screens/customer/index";
 
 import HomeScreen from "./screens/home/HomeScreen";
 import JobDetailScreen from "./screens/jobdetail";
+import ApplicationScreen from "./screens/applications";
+import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
+import Tabs from "./navigation/tabs";
 
 const Stack = createStackNavigator();
 
@@ -92,48 +95,43 @@ function Navigation() {
   const state = useSelector((state) => state);
   console.log("current state", state);
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          gestureEnabled: true,
-          gestureDirection: "horizontal",
-        }}
-      >
-        {/* <Stack.Screen
-          options={{ headerShown: false }}
-          name="LoginScreen"
-          component={LoginScreen}
-        /> */}
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="HomeScreen"
-          component={HomeScreen}
-        /> 
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="JobDetailScreen"
-          component={JobDetailScreen}
-        />
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="HomeScreen"
+          screenOptions={{
+            gestureEnabled: true,
+            gestureDirection: "horizontal",
+          }}
+        >
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="HomeScreen"
+            component={Tabs}
+           
+          />
         
-        {/* <Stack.Screen
+        <Stack.Screen
           options={{ headerShown: false }}
           name="SplashScreen"
           component={SplashScreen}
         />
+            <Stack.Screen
+            options={{ headerShown: false }}
+            name="JobDetailScreen"
+            component={JobDetailScreen}
+          />
         <Stack.Screen
           options={{ headerShown: false }}
           name="OnBoardingScreen"
           component={OnBoardingScreen}
         />
-        {/* <Stack.Screen
-          options={{ headerShown: false }}
-          name="CustomerScreen"
-          component={CustomerScreen}
-        /> */}
 
+        </Stack.Navigator>
+     
+       
+      </NavigationContainer>
 
-      </Stack.Navigator>
-    </NavigationContainer>
+   
   );
 }
 

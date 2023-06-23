@@ -14,14 +14,19 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Colors from "../assets/Colors";
+import { useNavigation } from "@react-navigation/core";
+import ApplicationScreen from "../screens/applications";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
-const CustomBottomNavigation = () => {
-  const [activeButton, setActiveButton] = useState("Home");
+const CustomBottomNavigation = (props) => {
 
+  const navigation = useNavigation();
+
+  const [activeButton, setActiveButton] = useState("Home");
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
+    navigation.navigate(buttonName)
   };
 
   const renderButton = (buttonName, buttonIcon) => {
@@ -46,12 +51,15 @@ const CustomBottomNavigation = () => {
   };
 
   return (
-    <View style={styles.container}>
-      {renderButton("Home", faHome)}
-      {renderButton("Job", faBriefcase)}
-      {renderButton("Company", faBuilding)}
-      {renderButton("Profile", faUser)}
+    <View style={{backgroundColor: Colors.white}}>
+      <View style={styles.container}>
+        {renderButton("Home", faHome)}
+        {renderButton("Application", faBriefcase)}
+        {renderButton("Company", faBuilding)}
+        {renderButton("Profile", faUser)}
+      </View>
     </View>
+   
   );
 };
 
@@ -66,9 +74,11 @@ const styles = StyleSheet.create({
     width: width * 0.9,
     backgroundColor: Colors.white,
     borderRadius: 20,
-    marginBottom: 15,
+    marginBottom: 10,
+    marginTop:10,
     paddingHorizontal: 10,
     elevation: 20,
+    alignSelf: "center",
   },
   buttonContainer: {
     justifyContent: "center",

@@ -143,9 +143,9 @@ const HomeScreen = ({navigation}) => {
           />
         )}
       />
-      <View style={styles.bottomNavigationContainer}>
+      {/* <View style={styles.bottomNavigationContainer}>
         <CustomBottomNavigation />
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 };
