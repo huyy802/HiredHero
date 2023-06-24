@@ -29,6 +29,7 @@ import JobDetailScreen from "./screens/jobdetail";
 import ApplicationScreen from "./screens/applications";
 import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
 import Tabs from "./navigation/tabs";
+import ApplicationDetailScreen from "./screens/applicationsdetail";
 
 const Stack = createStackNavigator();
 
@@ -115,11 +116,16 @@ function Navigation() {
           name="SplashScreen"
           component={SplashScreen}
         />
-            <Stack.Screen
-            options={{ headerShown: false }}
-            name="JobDetailScreen"
-            component={JobDetailScreen}
-          />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="ApplicationDetailScreen"
+          component={ApplicationDetailScreen}
+        />
+          <Stack.Screen
+          options={{ headerShown: false }}
+          name="JobDetailScreen"
+          component={JobDetailScreen}
+        />
         <Stack.Screen
           options={{ headerShown: false }}
           name="OnBoardingScreen"

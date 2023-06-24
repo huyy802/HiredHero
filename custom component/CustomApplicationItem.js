@@ -35,8 +35,8 @@ const CustomApplicationItem = ({
         <View style={styles.status}>
             {
                 status.toLowerCase() === "pending" ? <View style={styles.pending_status_container}><Text style={styles.pending_status}>Pending</Text></View>
-                : status.toLowerCase() === "reject" ? <View style={styles.reject_status_container}><Text style={styles.reject_status}>Reject</Text></View> 
-                : status.toLowerCase() === "interview" ? <View style={styles.interview_status_container}><Text style = {styles.interview_status}>Interview</Text></View>
+                : status.toLowerCase() === "declined" ? <View style={styles.reject_status_container}><Text style={styles.reject_status}>Reject</Text></View> 
+                : status.toLowerCase() === "accepted" ? <View style={styles.interview_status_container}><Text style = {styles.interview_status}>Interview</Text></View>
                 : <Text style={{backgroundColor: 'red'}}></Text>
             }
                

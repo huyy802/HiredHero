@@ -9,10 +9,18 @@ import CustomFilterOptionButton from "../../custom component/CustomFilterOptionB
 import * as Animatable from "react-native-animatable";
 import CustomBottomNavigation from "../../custom component/CustomBottomNavigation";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch } from "react-redux";
+import { FlatList } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/core";
 
 const filterOptions = ["All", "IT", "Finance", "Another Option"]; // Add your filter options here
-
+const SeparatorComponent = () => {
+    return <View style={styles.separatorComponent} />;
+  };
 const ApplicationScreen = (props) => {
+    const dispatch = useDispatch();
+    const navigation = useNavigation();
+
     const [searchQuery, setSearchQuery] = useState("");
     const [jobData, setJobData] = useState([]);
     const [showFilterOptions, setShowFilterOptions] = useState(false);
@@ -23,8 +31,22 @@ const ApplicationScreen = (props) => {
         setSelectedOption(option);
         setSearchQuery("");
       };
-
-      
+    const handleResponse = (response) => {
+        if (!response.success) {
+            Alert.alert(response.message);
+            return;
+        }
+        setJobData(response.message);
+    };
+    const getData = () => {
+        dispatch(
+            //tạm thời
+            getAPIActionJSON("getAllAppliesFromUser", null, "", "/646f7e91d8319469c198f606", (e) => handleResponse(e))
+        );
+    };
+    useEffect(() => {
+        getData()
+    },[])
     const handleSearch = () => {
 
     }
@@ -90,37 +112,24 @@ const ApplicationScreen = (props) => {
                 ))}
                 </Animatable.View>
             )}
-             <CustomApplicationItem
-                nameJob = "UI/UX Designer"
-                companyName = "AirBNB"
-                location = "United States"
-                type = "Full Time"
-                imagePath = {require("../../assets/images/test/airbnb.png")}
-                applyDate = '03/05/2023'
-                status = 'pending'
+            <FlatList
+                ItemSeparatorComponent={SeparatorComponent}
+                style={styles.listContainer}
+                data={jobData}
+                renderItem={({ item }) => (
+                    <CustomApplicationItem
+                    onPress = {() =>{ navigation.navigate('ApplicationDetailScreen', { application: item }) }}
+                    nameJob = {item.job.jobTitle}
+                    companyName = {item.job.company.companyName}
+                    location = {item.job.location}
+                    type = {item.job.type}
+                    imagePath = {require("../../assets/images/test/airbnb.png")}
+                    applyDate = {item.expired}
+                    status = {item.status}/>
+                )}
             />
-            <CustomApplicationItem
-                nameJob = "UI/UX Designer"
-                companyName = "AirBNB"
-                location = "United States"
-                type = "Full Time"
-                imagePath = {require("../../assets/images/test/airbnb.png")}
-                applyDate = '03/05/2023'
-                status = 'reject'
-            />
-            <CustomApplicationItem
-                nameJob = "UI/UX Designer"
-                companyName = "AirBNB"
-                location = "United States"
-                type = "Full Time"
-                imagePath = {require("../../assets/images/test/airbnb.png")}
-                applyDate = '03/05/2023'
-                status = 'interview'
-            />
-            
-             {/* <View style={styles.bottomNavigationContainer}>
-                <CustomBottomNavigation />
-            </View> */}
+             
+           
         </SafeAreaView>
        
     )

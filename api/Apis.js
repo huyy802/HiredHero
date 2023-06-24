@@ -14,4 +14,9 @@ export const getAPIs = {
     path: "/api/job/getJob",
     method: "GET",
   },
+  getAllAppliesFromUser: {
+    name: "getAllAppliesFromUser",
+    path: "/api/apply/getAllAppliesFromUser",
+    method: "GET",
+  }
 };
