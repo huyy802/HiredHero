@@ -23,10 +23,11 @@ import SplashScreen from "./screens/onboarding/SplashScreen/index";
 import LoginScreen from "./screens/authentication/login/LoginScreen/index";
 import OnBoardingScreen from "./screens/onboarding/OnBoardingScreen";
 import CustomerScreen from "./screens/customer/index";
-
+import ProfileScreen from "./screens/profile/ProfileScreen";
 import HomeScreen from "./screens/home/HomeScreen";
 import JobDetailScreen from "./screens/jobdetail";
-
+import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
+import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
 const Stack = createStackNavigator();
 
 const config = {
@@ -108,13 +109,23 @@ function Navigation() {
           options={{ headerShown: false }}
           name="HomeScreen"
           component={HomeScreen}
-        /> 
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="ProfileScreen"
+          component={ProfileScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="BookmarkScreen"
+          component={BookmarkScreen}
+        />
         <Stack.Screen
           options={{ headerShown: false }}
           name="JobDetailScreen"
           component={JobDetailScreen}
         />
-        
+
         {/* <Stack.Screen
           options={{ headerShown: false }}
           name="SplashScreen"
@@ -130,8 +141,6 @@ function Navigation() {
           name="CustomerScreen"
           component={CustomerScreen}
         /> */}
-
-
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -170,6 +179,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <Navigation />
+
       {<LoadingAnimation />}
     </Provider>
   );

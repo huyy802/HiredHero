@@ -18,48 +18,15 @@ const filterOptions = ["All", "IT", "Finance", "Another Option"]; // Add your fi
 const SeparatorComponent = () => {
   return <View style={styles.separatorComponent} />;
 };
-const HomeScreen = ({ navigation }) => {
+const BookmarkScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.user);
-
   const [searchQuery, setSearchQuery] = useState("");
   const [jobData, setJobData] = useState([]);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState("All");
   const filterOptionsHeight = useRef(new Animated.Value(0)).current;
-  const handleResponse = (response) => {
-    if (!response.success) {
-      Alert.alert(response.message);
-      return;
-    }
-    setJobData(response.message);
-  };
-  const getData = () => {
-    dispatch(
-      getAPIActionJSON("getAllJobs", null, null, "", (e) => handleResponse(e))
-    );
-  };
-  const handleResponseGetBookmark = (response) => {
-    if (!response.success) {
-      Alert.alert(response.message);
-      return;
-    }
-  };
-  const getBookmarkData = () => {
-    dispatch(
-      getAPIActionJSON(
-        "getAllBookmarksOfUser",
-        null,
-        null,
-        `/${userInfo.id}`,
-        (e) => handleResponseGetBookmark(e)
-      )
-    );
-  };
-  useEffect(() => {
-    getData();
-    getBookmarkData();
-  }, []);
+  const jobs = useSelector((state) => state.user.bookmarks);
+  useEffect(() => {}, [jobs]);
   const handleOptionPress = (option) => {
     setSelectedOption(option);
     setSearchQuery("");
@@ -104,7 +71,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.screen}>
       <CustomAppBarWithImage
-        title="Home"
+        title="Bookmark"
         imagePath={require("../../../assets/images/app_logo.png")}
       />
       <View style={styles.container}>
@@ -143,25 +110,30 @@ const HomeScreen = ({ navigation }) => {
           ))}
         </Animatable.View>
       )}
-      <FlatList
-        ItemSeparatorComponent={SeparatorComponent}
-        style={styles.listContainer}
-        data={jobData}
-        renderItem={({ item }) => (
-          <CustomJobCard
-            onPress={() => {
-              navigation.navigate("JobDetailScreen", { job: item });
-            }}
-            nameJob={item.jobTitle}
-            companyName={item.company.companyName}
-            location={item.location}
-            type={item.type}
-            salary={item.salary}
-            isSaved={item.isSaved}
-            imagePath={require("../../../assets/images/test/airbnb.png")}
-          />
-        )}
-      />
+      {jobs.length === 0 ? (
+        <Text>You don't have any bookmark.</Text>
+      ) : (
+        <FlatList
+          ItemSeparatorComponent={SeparatorComponent}
+          style={styles.listContainer}
+          data={jobs}
+          renderItem={({ item }) => (
+            <CustomJobCard
+              onPress={() => {
+                navigation.navigate("JobDetailScreen", { job: item.job });
+              }}
+              nameJob={item.job.jobTitle}
+              companyName={item.job.company.companyName}
+              // companyName="123"
+              location={item.job.location}
+              type={item.job.type}
+              salary={item.job.salary}
+              isSaved={item.job.isSaved}
+              imagePath={require("../../../assets/images/test/airbnb.png")}
+            />
+          )}
+        />
+      )}
       <View style={styles.bottomNavigationContainer}>
         <CustomBottomNavigation />
       </View>
@@ -169,7 +141,7 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default BookmarkScreen;
 const dataset = [
   {
     jobName: "Software Engineer",

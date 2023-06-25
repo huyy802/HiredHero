@@ -12,17 +12,46 @@ import {
   faBriefcase,
   faBuilding,
   faUser,
+  faBookBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 import Colors from "../assets/Colors";
+import { useNavigation } from "@react-navigation/core";
+import { useRoute } from "@react-navigation/native";
 
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
 const CustomBottomNavigation = () => {
+  const route = useRoute();
+  const routeName = route.name;
+  if (
+    routeName !== "HomeScreen" &&
+    routeName !== "ProfileScreen" &&
+    routeName !== "BookmarkScreen"
+  ) {
+    return null; // Don't render the bottom navigation bar
+  }
   const [activeButton, setActiveButton] = useState("Home");
-
+  const navigation = useNavigation();
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
+    if (buttonName === "Home") {
+      navigation.navigate("HomeScreen");
+    } else if (buttonName === "Bookmark") {
+      navigation.navigate("BookmarkScreen");
+    } else if (buttonName === "Profile") {
+      navigation.navigate("ProfileScreen");
+    }
   };
+
+  useState(() => {
+    setActiveButton(
+      routeName == "HomeScreen"
+        ? "Home"
+        : routeName == "BookmarkScreen"
+        ? "Bookmark"
+        : "Profile"
+    );
+  }, [routeName]);
 
   const renderButton = (buttonName, buttonIcon) => {
     const isActive = activeButton === buttonName;
@@ -49,7 +78,7 @@ const CustomBottomNavigation = () => {
     <View style={styles.container}>
       {renderButton("Home", faHome)}
       {renderButton("Job", faBriefcase)}
-      {renderButton("Company", faBuilding)}
+      {renderButton("Bookmark", faBookBookmark)}
       {renderButton("Profile", faUser)}
     </View>
   );
