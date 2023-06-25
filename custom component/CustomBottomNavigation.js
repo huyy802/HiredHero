@@ -12,9 +12,11 @@ import {
   faBriefcase,
   faBuilding,
   faUser,
+  faBookBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 import Colors from "../assets/Colors";
 import { useNavigation } from "@react-navigation/core";
+<<<<<<< HEAD
 import ApplicationScreen from "../screens/applications";
 
 const height = Dimensions.get("window").height;
@@ -29,7 +31,44 @@ const CustomBottomNavigation = (props) => {
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
     navigation.navigate(buttonName)
+=======
+import { useRoute } from "@react-navigation/native";
+
+const height = Dimensions.get("window").height;
+const width = Dimensions.get("window").width;
+const CustomBottomNavigation = () => {
+  const route = useRoute();
+  const routeName = route.name;
+  if (
+    routeName !== "HomeScreen" &&
+    routeName !== "ProfileScreen" &&
+    routeName !== "BookmarkScreen"
+  ) {
+    return null; // Don't render the bottom navigation bar
+  }
+  const [activeButton, setActiveButton] = useState("Home");
+  const navigation = useNavigation();
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+    if (buttonName === "Home") {
+      navigation.navigate("HomeScreen");
+    } else if (buttonName === "Bookmark") {
+      navigation.navigate("BookmarkScreen");
+    } else if (buttonName === "Profile") {
+      navigation.navigate("ProfileScreen");
+    }
+>>>>>>> 5d5b16b8dc7456a000b207ba199f7c8480dd6379
   };
+
+  useState(() => {
+    setActiveButton(
+      routeName == "HomeScreen"
+        ? "Home"
+        : routeName == "BookmarkScreen"
+        ? "Bookmark"
+        : "Profile"
+    );
+  }, [routeName]);
 
   const renderButton = (buttonName, buttonIcon) => {
     const isActive = activeButton === buttonName;
@@ -53,6 +92,7 @@ const CustomBottomNavigation = (props) => {
   };
 
   return (
+<<<<<<< HEAD
     <View style={{backgroundColor: Colors.white}}>
       <View style={styles.container}>
         {renderButton("Home", faHome)}
@@ -60,6 +100,13 @@ const CustomBottomNavigation = (props) => {
         {renderButton("Company", faBuilding)}
         {renderButton("Profile", faUser)}
       </View>
+=======
+    <View style={styles.container}>
+      {renderButton("Home", faHome)}
+      {renderButton("Job", faBriefcase)}
+      {renderButton("Bookmark", faBookBookmark)}
+      {renderButton("Profile", faUser)}
+>>>>>>> 5d5b16b8dc7456a000b207ba199f7c8480dd6379
     </View>
    
   );

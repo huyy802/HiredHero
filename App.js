@@ -23,7 +23,7 @@ import SplashScreen from "./screens/onboarding/SplashScreen/index";
 import LoginScreen from "./screens/authentication/login/LoginScreen/index";
 import OnBoardingScreen from "./screens/onboarding/OnBoardingScreen";
 import CustomerScreen from "./screens/customer/index";
-
+import ProfileScreen from "./screens/profile/ProfileScreen";
 import HomeScreen from "./screens/home/HomeScreen";
 import JobDetailScreen from "./screens/jobdetail";
 import ApplicationScreen from "./screens/applications";
@@ -34,6 +34,8 @@ import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import CompanyDetailScreen from "./screens/companydetail";
 
+import BookmarScreen from "./screens/bookmark/BookmarkScreen";
+import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
 const Stack = createStackNavigator();
 
 const config = {
@@ -116,15 +118,28 @@ function Navigation() {
         
         <Stack.Screen
           options={{ headerShown: false }}
-          name="SplashScreen"
-          component={SplashScreen}
+
+          name="HomeScreen"
+          component={HomeScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="ProfileScreen"
+          component={ProfileScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="BookmarkScreen"
+          component={BookmarkScreen}
         />
         <Stack.Screen
           options={{ headerShown: false }}
           name="ApplicationDetailScreen"
           component={ApplicationDetailScreen}
         />
-          <Stack.Screen
+
+        {/* <Stack.Screen
+>>>>>>> 5d5b16b8dc7456a000b207ba199f7c8480dd6379
           options={{ headerShown: false }}
           name="JobDetailScreen"
           component={JobDetailScreen}
@@ -136,15 +151,12 @@ function Navigation() {
         />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="CompanyDetailScreen"
-          component={CompanyDetailScreen}
-        />
-        </Stack.Navigator>
-     
-       
-      </NavigationContainer>
 
-   
+          name="CustomerScreen"
+          component={CustomerScreen}
+        /> */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -191,6 +203,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <Navigation />
+
       {<LoadingAnimation />}
     </Provider>
   );
