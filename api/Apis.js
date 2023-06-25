@@ -37,12 +37,22 @@ export const getAPIs = {
     path: "/api/apply/getAllAppliesFromUser",
     method: "GET",
   },
-
+  createApply: {
+    name: "getAllAppliesFromUser",
+    path: "/api/apply/createApply/",
+    method: "POST",
+  },
   //company
   getAllCompanies: {
     name: "getAllCompanies",
     path: "/api/company/getAllCompanies",
     method: "GET",
   },
+
+  uploadFile: {
+    name: "uploadFile",
+    path: "/api/file/upload",
+    method: "POST",
+  }
  
 };
