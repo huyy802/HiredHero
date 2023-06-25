@@ -1,28 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
 import { View, Text, TouchableOpacity, Animated, Alert } from "react-native";
 import styles from "./style.js";
-import CustomAppBarWithImage from "../../../custom component/CustomAppBarWithImage";
+import CustomAppBarWithImage from "../../custom component/CustomAppBarWithImage";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CustomSearchInput from "../../../custom component/CustomSearchInput.js";
-import CustomFilterOptionButton from "../../../custom component/CustomFilterOptionButton.js";
+import CustomSearchInput from "../../custom component/CustomSearchInput.js";
+import CustomFilterOptionButton from "../../custom component/CustomFilterOptionButton.js";
 import { FlatList } from "react-native-gesture-handler";
-import CustomJobCard from "../../../custom component/CustomJobCard.js";
+import CustomJobCard from "../../custom component/CustomJobCard.js";
 import * as Animatable from "react-native-animatable";
 import { useDispatch } from "react-redux";
-import { getAPIActionJSON } from "../../../api/ApiActions.js";
+import { getAPIActionJSON } from "../../api/ApiActions.js";
 import { createStackNavigator } from '@react-navigation/stack';
-import CustomBottomNavigation from "../../../custom component/CustomBottomNavigation.js";
+import CustomBottomNavigation from "../../custom component/CustomBottomNavigation.js";
+import CustomCompanyCard from "../../custom component/CustomCompanyCard.js";
 
 const filterOptions = ["All", "IT", "Finance", "Another Option"]; // Add your filter options here
 
 const SeparatorComponent = () => {
   return <View style={styles.separatorComponent} />;
 };
-const HomeScreen = ({navigation}) => {
+const CompanyScreen = ({navigation}) => {
   const dispatch = useDispatch();
   // const state = useSelector((state) => state);
   const [searchQuery, setSearchQuery] = useState("");
-  const [jobData, setJobData] = useState([]);
+  const [companyData, setCompanyData] = useState([]);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState("All");
   const filterOptionsHeight = useRef(new Animated.Value(0)).current;
@@ -31,11 +32,11 @@ const HomeScreen = ({navigation}) => {
       Alert.alert(response.message);
       return;
     }
-    setJobData(response.message);
+    setCompanyData(response.message);
   };
   const getData = () => {
     dispatch(
-      getAPIActionJSON("getAllJobsNonExpired", null, null, "", (e) => handleResponse(e))
+      getAPIActionJSON("getAllCompanies", null, null, "", (e) => handleResponse(e))
     );
   };
   useEffect(() => {
@@ -50,7 +51,7 @@ const HomeScreen = ({navigation}) => {
     setSearchQuery(query);
   };
 
-  const filteredData = jobData.filter(
+  const filteredData = companyData.filter(
     (item) =>
       (selectedOption === "All" || item.industry === selectedOption) &&
       (searchQuery === "" ||
@@ -87,8 +88,8 @@ const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.screen}>
       <CustomAppBarWithImage
-        title="Home"
-        imagePath={require("../../../assets/images/app_logo.png")}
+        title="Company"
+        imagePath={require("../../assets/images/app_logo.png")}
       />
       <View style={styles.container}>
         <CustomSearchInput onSubmit={handleSearch} />
@@ -129,17 +130,14 @@ const HomeScreen = ({navigation}) => {
       <FlatList
         ItemSeparatorComponent={SeparatorComponent}
         style={styles.listContainer}
-        data={jobData}
+        data={companyData}
         renderItem={({ item }) => (
-          <CustomJobCard       
-            onPress = {() =>{ navigation.navigate('JobDetailScreen', { job: item }) }}
-            nameJob={item.jobTitle}
-            companyName={item.company.companyName}
+          <CustomCompanyCard       
+            onPress = {() =>{ navigation.navigate('CompanyDetailScreen', { company: item }) }}
             location={item.location}
-            type={item.type}
-            salary={item.salary}
-            isSaved={item.isSaved}
-            imagePath={require("../../../assets/images/test/airbnb.png")}
+            companyName={item.companyName}
+            established={item.establishedYear}
+            imagePath={require("../../assets/images/test/airbnb.png")}
           />
         )}
       />
@@ -150,105 +148,5 @@ const HomeScreen = ({navigation}) => {
   );
 };
 
-export default HomeScreen;
-const dataset = [
-  {
-    jobName: "Software Engineer",
-    companyName: "ABC Inc.",
-    location: "New York",
-    type: "Full Time",
-    salary: 50000,
-    isSaved: true,
-    industry: "IT",
-    imagePath: require("../../../assets/images/test/airbnb.png"),
-  },
-  {
-    industry: "IT",
+export default CompanyScreen;
 
-    jobName: "Software Engineer",
-    companyName: "XYZ Corp.",
-    location: "San Francisco",
-    type: "Part Time",
-    salary: 30000,
-    isSaved: false,
-    imagePath: require("../../../assets/images/test/airbnb.png"),
-  },
-  {
-    industry: "IT",
-
-    jobName: "Software Engineer",
-    companyName: "PQR Ltd.",
-    location: "Chicago",
-    type: "Full Time",
-    salary: 60000,
-    isSaved: true,
-    imagePath: require("../../../assets/images/test/airbnb.png"),
-  },
-  {
-    industry: "Finance",
-
-    jobName: "Software Engineer",
-    companyName: "ABC Inc.",
-    location: "New York",
-    type: "Full Time",
-    salary: 50000,
-    isSaved: true,
-    imagePath: require("../../../assets/images/test/airbnb.png"),
-  },
-  {
-    industry: "Finance",
-
-    jobName: "Software Engineer",
-    companyName: "ABC Inc.",
-    location: "New York",
-    type: "Full Time",
-    salary: 50000,
-    isSaved: true,
-    imagePath: require("../../../assets/images/test/airbnb.png"),
-  },
-  {
-    industry: "Finance",
-
-    jobName: "Software Engineer",
-    companyName: "ABC Inc.",
-    location: "New York",
-    type: "Full Time",
-    salary: 50000,
-    isSaved: true,
-    imagePath: require("../../../assets/images/test/airbnb.png"),
-  },
-  {
-    industry: "IT",
-
-    jobName: "IT Help Desk",
-    companyName: "ABC Inc.",
-    location: "New York",
-    type: "Full Time",
-    salary: 50000,
-    isSaved: true,
-    imagePath: require("../../../assets/images/test/airbnb.png"),
-  },
-  {
-    industry: "Finance",
-
-    jobName: "Software Engineer",
-    companyName: "ABC Inc.",
-    location: "New York",
-    type: "Full Time",
-    salary: 50000,
-    isSaved: true,
-    imagePath: require("../../../assets/images/test/airbnb.png"),
-  },
-  {
-    industry: "Finance",
-
-    jobName: "Software Engineer",
-    companyName: "ABC Inc.",
-    location: "New York",
-    type: "Full Time",
-    salary: 50000,
-    isSaved: true,
-    imagePath: require("../../../assets/images/test/airbnb.png"),
-  },
-  // Add more objects as needed
-];

@@ -21,6 +21,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { createStackNavigator } from '@react-navigation/stack';
 import CustomBottomNavigation from '../custom component/CustomBottomNavigation';
 import { NavigationContainer } from '@react-navigation/native';
+import CompanyScreen from '../screens/companies';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +31,6 @@ const Tabs = ({route, navigation}) => {
 
     useEffect(() => {
       const unsubscribe = navigation.addListener('tabPress', (e) => {
-      
         e.preventDefault();
         navigation.navigate("selectedTab");
       });
@@ -41,6 +41,7 @@ const Tabs = ({route, navigation}) => {
         <Tab.Navigator tabBar={props => <CustomBottomNavigation {...props} selectedTab={selectedTab}/>}>
             <Tab.Screen  options={{ headerShown: false }} name="Home" component={HomeScreen} />
             <Tab.Screen  options={{ headerShown: false }} name="Application" component={ApplicationScreen} />
+            <Tab.Screen options={{headerShown: false}} name='Company' component={CompanyScreen}/>
         </Tab.Navigator>
     )
     

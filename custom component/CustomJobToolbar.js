@@ -7,7 +7,7 @@ const CustomJobToolbar = (props) => {
         props.apply == false 
         ?
         <View style={{
-            position: "absolute", bottom: 20, left: 0, right: 0, height: 50, flexDirection: "row", justifyContent: "space-between",
+            position: "absolute", bottom: 10, left: 0, right: 0, height: 50, flexDirection: "row", justifyContent: "space-between",
             paddingTop: 6, paddingBottom: 6
         }}>
             <View style={{ height: 48, width: 48, backgroundColor: "#DADADA", borderRadius: 10, padding: 10 }}>

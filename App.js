@@ -32,6 +32,7 @@ import Tabs from "./navigation/tabs";
 import ApplicationDetailScreen from "./screens/applicationsdetail";
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
+import CompanyDetailScreen from "./screens/companydetail";
 
 const Stack = createStackNavigator();
 
@@ -133,7 +134,11 @@ function Navigation() {
           name="OnBoardingScreen"
           component={OnBoardingScreen}
         />
-
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="CompanyDetailScreen"
+          component={CompanyDetailScreen}
+        />
         </Stack.Navigator>
      
        
