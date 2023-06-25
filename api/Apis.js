@@ -14,4 +14,9 @@ export const getAPIs = {
     path: "/api/job/getJob",
     method: "GET",
   },
+  getAllBookmarksOfUser: {
+    name: "getAllBookmarksOfUser",
+    path: "/api/bookmark/getAllBookmarksOfUser",
+    method: "GET",
+  },
 };
