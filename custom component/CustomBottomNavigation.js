@@ -21,9 +21,11 @@ const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
 const CustomBottomNavigation = (props) => {
 
+
   const navigation = useNavigation();
 
-  const [activeButton, setActiveButton] = useState("Home");
+  const [activeButton, setActiveButton] = useState(props.selectedTab===null ?"Home": props.selectedTab);
+
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
     navigation.navigate(buttonName)

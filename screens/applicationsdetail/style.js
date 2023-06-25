@@ -16,14 +16,32 @@ const styles = StyleSheet.create({
         paddingBottom: 6,
     },
     pendingButton: {
-    
         height: 48,
         opacity: 0.6, 
-        backgroundColor: "#DADADA",
         paddingStart: 55, 
         paddingEnd: 55, 
         width:"100%",
         backgroundColor:Colors.blue,
+        borderRadius: 30, 
+        flexDirection:"column", 
+        justifyContent:"center"
+    },
+    acceptedButton: {
+        height: 48,
+        paddingStart: 55, 
+        paddingEnd: 55, 
+        width:"100%",
+        backgroundColor:Colors.blue,
+        borderRadius: 30, 
+        flexDirection:"column", 
+        justifyContent:"center"
+    },
+    rejectButton: {
+        height: 48,
+        paddingStart: 55, 
+        paddingEnd: 55, 
+        width:"100%",
+        backgroundColor:Colors.black,
         borderRadius: 30, 
         flexDirection:"column", 
         justifyContent:"center"

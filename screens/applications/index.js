@@ -128,8 +128,7 @@ const ApplicationScreen = (props) => {
                     status = {item.status}/>
                 )}
             />
-             
-           
+
         </SafeAreaView>
        
     )

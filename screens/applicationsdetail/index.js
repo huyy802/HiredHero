@@ -26,6 +26,10 @@ const ApplicationDetailScreen = (props) => {
     const handlePressApplyNow = (e) => {
         setApply(true);
     }
+    const handleRejectButton = (e) => {
+      navigation.navigate("HomeScreen", {selectedTab : "Home"});
+      
+    }
 
     return (
       <View style={{ 
@@ -46,15 +50,23 @@ const ApplicationDetailScreen = (props) => {
 
         <CustomApplicationInfo application={application}/>
         <View style={styles.buttonContainer}>
+        {
+          application.status === "pending" ?
           <TouchableOpacity disabled={true} style={styles.pendingButton}>
-              <Text style={{fontSize: 16, color: "white", fontWeight:"700", textAlign:"center"}}>Apply Now</Text>
+              <Text style={{fontSize: 16, color: "white", fontWeight:"700", textAlign:"center"}}>Waiting...</Text>
           </TouchableOpacity>
+          :
+          application.status === "accepted" ?
+          <TouchableOpacity style={styles.acceptedButton}>
+              <Text style={{fontSize: 16, color: "white", fontWeight:"700", textAlign:"center"}}>Set interview notification</Text>
+          </TouchableOpacity>
+          :
+          <TouchableOpacity style={styles.rejectButton} onPress={handleRejectButton}>
+              <Text style={{fontSize: 16, color: "white", fontWeight:"700", textAlign:"center"}}>Discover another job</Text>
+          </TouchableOpacity>
+        }
+         
         </View>
-       
-        
-        
-       
-    
     </View>
        
     );
