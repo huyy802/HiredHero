@@ -16,22 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Colors from "../assets/Colors";
 import { useNavigation } from "@react-navigation/core";
-<<<<<<< HEAD
-import ApplicationScreen from "../screens/applications";
 
-const height = Dimensions.get("window").height;
-const width = Dimensions.get("window").width;
-const CustomBottomNavigation = (props) => {
-
-
-  const navigation = useNavigation();
-
-  const [activeButton, setActiveButton] = useState(props.selectedTab===null ?"Home": props.selectedTab);
-
-  const handleButtonClick = (buttonName) => {
-    setActiveButton(buttonName);
-    navigation.navigate(buttonName)
-=======
 import { useRoute } from "@react-navigation/native";
 
 const height = Dimensions.get("window").height;
@@ -57,7 +42,6 @@ const CustomBottomNavigation = () => {
     } else if (buttonName === "Profile") {
       navigation.navigate("ProfileScreen");
     }
->>>>>>> 5d5b16b8dc7456a000b207ba199f7c8480dd6379
   };
 
   useState(() => {
@@ -92,21 +76,12 @@ const CustomBottomNavigation = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <View style={{backgroundColor: Colors.white}}>
-      <View style={styles.container}>
-        {renderButton("Home", faHome)}
-        {renderButton("Application", faBriefcase)}
-        {renderButton("Company", faBuilding)}
-        {renderButton("Profile", faUser)}
-      </View>
-=======
+
     <View style={styles.container}>
       {renderButton("Home", faHome)}
       {renderButton("Job", faBriefcase)}
       {renderButton("Bookmark", faBookBookmark)}
       {renderButton("Profile", faUser)}
->>>>>>> 5d5b16b8dc7456a000b207ba199f7c8480dd6379
     </View>
    
   );

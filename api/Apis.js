@@ -20,7 +20,6 @@ export const getAPIs = {
     path: "/api/job/getJob",
     method: "GET",
   },
-<<<<<<< HEAD
   getAllJobsFromCompany: {
     name: "getAllJobsFromCompany",
     path: "/api/job/getAllJobsFromCompany",
@@ -54,13 +53,11 @@ export const getAPIs = {
     name: "uploadFile",
     path: "/api/file/upload",
     method: "POST",
-  }
+  },
  
-=======
   getAllBookmarksOfUser: {
     name: "getAllBookmarksOfUser",
     path: "/api/bookmark/getAllBookmarksOfUser",
     method: "GET",
   },
->>>>>>> 5d5b16b8dc7456a000b207ba199f7c8480dd6379
 };
