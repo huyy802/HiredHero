@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Easing,
   LogBox,
@@ -30,6 +30,8 @@ import ApplicationScreen from "./screens/applications";
 import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
 import Tabs from "./navigation/tabs";
 import ApplicationDetailScreen from "./screens/applicationsdetail";
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
 
 const Stack = createStackNavigator();
 
@@ -170,7 +172,17 @@ function LoadingAnimation() {
   );
 }
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
+
 export default function App() {
+ 
   return (
     <Provider store={store}>
       <Navigation />

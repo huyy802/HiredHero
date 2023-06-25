@@ -11,6 +11,7 @@ import { useRoute } from "@react-navigation/native";
 import { useState } from "react";
 import { back } from "react-native/Libraries/Animated/Easing";
 import CustomApplicationInfo from "../../custom component/CustomApplicationInfo";
+import InterviewNotification from "../../notifications/InterviewNotification.js";
 
 const ApplicationDetailScreen = (props) => {
     const route = useRoute();
@@ -30,7 +31,10 @@ const ApplicationDetailScreen = (props) => {
       navigation.navigate("HomeScreen", {selectedTab : "Home"});
       
     }
-
+    const handleSetNotification = (e) => {
+      InterviewNotification("You have interview with "+application.job.company.companyName 
+      ,"Your interview will start at "+application.timeInterview +" at"+application.placeInterview, application.timeInterview);
+    }
     return (
       <View style={{ 
         paddingHorizontal:20,
@@ -57,7 +61,7 @@ const ApplicationDetailScreen = (props) => {
           </TouchableOpacity>
           :
           application.status === "accepted" ?
-          <TouchableOpacity style={styles.acceptedButton}>
+          <TouchableOpacity style={styles.acceptedButton} onPress={handleSetNotification}>
               <Text style={{fontSize: 16, color: "white", fontWeight:"700", textAlign:"center"}}>Set interview notification</Text>
           </TouchableOpacity>
           :
