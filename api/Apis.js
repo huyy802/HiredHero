@@ -60,4 +60,9 @@ export const getAPIs = {
     path: "/api/bookmark/getAllBookmarksOfUser",
     method: "GET",
   },
+  createApply: {
+    name: "createApply",
+    path: "api/apply/createApply",
+    method: "POST",
+  },
 };

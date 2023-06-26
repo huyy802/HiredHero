@@ -34,7 +34,8 @@ import * as Permissions from 'expo-permissions';
 import CompanyDetailScreen from "./screens/companydetail";
 
 import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
-import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
+import TabForUser from "./custom component/CustomBottomNavigation";
+
 const Stack = createStackNavigator();
 
 const config = {
@@ -100,24 +101,28 @@ function Navigation() {
   const state = useSelector((state) => state);
   console.log("current state", state);
   return (
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="HomeScreen"
-          screenOptions={{
-            gestureEnabled: true,
-            gestureDirection: "horizontal",
-          }}
-        >
-          <Stack.Screen
-            options={{ headerShown: false }}
-            name="HomeScreen"
-            component={Tabs}
-           
-          />
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          gestureEnabled: true,
+          gestureDirection: "horizontal",
+        }}
+      >
+        {/* <Stack.Screen
+          options={{ headerShown: false }}
+          name="LoginScreen"
+          component={LoginScreen}
+        /> */}
         <Stack.Screen
-          options={{headerShown: false}}
-          name="CompanyDetailScreen"
-          component={CompanyDetailScreen}/>
+          options={{ headerShown: false }}
+          name="TabForUser"
+          component={TabForUser}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="HomeScreen"
+          component={HomeScreen}
+        />
         <Stack.Screen
           options={{ headerShown: false }}
           name="ProfileScreen"

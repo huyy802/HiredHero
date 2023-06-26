@@ -9,100 +9,172 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
   faHome,
-  faBriefcase,
-  faBuilding,
   faUser,
   faBookBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 import Colors from "../assets/Colors";
-import { useNavigation } from "@react-navigation/core";
 
-import { useRoute } from "@react-navigation/native";
-
+import {
+  createBottomTabNavigator,
+  BottomTabBar,
+} from "@react-navigation/bottom-tabs";
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
-const CustomBottomNavigation = () => {
-  const route = useRoute();
-  const routeName = route.name;
-  if (
-    routeName !== "HomeScreen" &&
-    routeName !== "ProfileScreen" &&
-    routeName !== "BookmarkScreen"
-  ) {
-    return null; // Don't render the bottom navigation bar
-  }
-  const [activeButton, setActiveButton] = useState("Home");
-  const navigation = useNavigation();
-  const handleButtonClick = (buttonName) => {
-    setActiveButton(buttonName);
-    navigation.navigate(buttonName)
+const Tab = createBottomTabNavigator();
+import Svg, { Path } from "react-native-svg";
+import HomeScreen from "../screens/home/HomeScreen";
+import BookmarkScreen from "../screens/bookmark/BookmarkScreen";
+import ProfileScreen from "../screens/profile/ProfileScreen";
+import { useSelector } from "react-redux";
 
-    // if (buttonName === "Home") {
-    //   navigation.navigate("HomeScreen");
-    // } else if (buttonName === "Bookmark") {
-    //   navigation.navigate("BookmarkScreen");
-    // } else if (buttonName === "Profile") {
-    //   navigation.navigate("ProfileScreen");
-    // }
-  };
-  useState(() => {
-      setActiveButton(
-        routeName
-      );
-    }, [routeName]);
+const TabBarCustomButton = ({
+  accessibilityState,
+  children,
+  onPress,
+  label,
+}) => {
+  const theme = useSelector((state) => state.setting.theme);
+  var isSelected = accessibilityState.selected;
 
-  // useState(() => {
-  //   setActiveButton(
-  //     routeName == "HomeScreen"
-  //       ? "Home"
-  //       : routeName == "BookmarkScreen"
-  //       ? "Bookmark"
-  //       : "Profile"
-  //   );
-  // }, [routeName]);
+  // if (isSelected) {
 
-  const renderButton = (buttonName, buttonIcon) => {
-    const isActive = activeButton === buttonName;
-
-    return (
+  return (
+    <View style={{ marginVertical: 15 }}>
       <TouchableOpacity
         style={[
           styles.buttonContainer,
-          isActive
+          isSelected
             ? styles.activeButtonContainer
             : styles.inactiveButtonContainer,
+          { marginLeft: 20 },
         ]}
-        onPress={() => handleButtonClick(buttonName)}
+        activeOpacity={1}
+        onPress={onPress}
       >
         <View style={styles.buttonContent}>
-          <FontAwesomeIcon icon={buttonIcon} color={Colors.black} size={24} />
-          {isActive && <Text style={styles.buttonText}>{buttonName}</Text>}
+          {isSelected ? (
+            <>
+              {children}
+              <Text
+                style={[
+                  styles.buttonText,
+                  { color: theme.mode === "light" ? "black" : "white" },
+                ]}
+              >
+                {label}
+              </Text>
+            </>
+          ) : (
+            <View style={styles.centeredIconContainer}>{children}</View>
+          )}
         </View>
       </TouchableOpacity>
-    );
-  };
-
-  return (
-
-    <View style={styles.container}>
-      {renderButton("Home", faHome)}
-      {renderButton("Application", faBriefcase)}
-      {renderButton("Bookmark", faBookBookmark)}
-      {renderButton("Company", faBuilding)}
-      {renderButton("Profile", faUser)}
     </View>
-   
   );
 };
 
-export default CustomBottomNavigation;
+const CustomTabBar = (props) => {
+  return (
+    // <View style={styles.container}>
+    <BottomTabBar {...props.props} />
+    // </View>
+  );
+};
+
+const Tabs = () => {
+  return (
+    // <View>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        headerShown: false,
+        tabBarStyle: {
+          position: "absolute",
+          bottom: height * 0.03,
+          left: (width - 0.9 * width) / 2,
+          width: 0.9 * width,
+          height: height * 0.09,
+          borderRadius: 20,
+          alignItems: "center",
+          justifyContent: "center",
+          borderTopWidth: 0,
+          backgroundColor: "white",
+          display: "flex",
+        },
+      }}
+      tabBar={(props) => <CustomTabBar props={props} />}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <FontAwesomeIcon icon={faHome} color={Colors.black} size={20} />
+          ),
+          tabBarButton: (props) => (
+            <TabBarCustomButton {...props} label="Home" />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Search"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <FontAwesomeIcon icon={faHome} color={Colors.black} size={20} />
+          ),
+          tabBarButton: (props) => (
+            <TabBarCustomButton {...props} label="Search" />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Bookmark"
+        component={BookmarkScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <FontAwesomeIcon
+              icon={faBookBookmark}
+              color={Colors.black}
+              size={20}
+            />
+          ),
+          tabBarButton: (props) => (
+            <TabBarCustomButton {...props} label="Bookmark" />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="User"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <FontAwesomeIcon icon={faUser} color={Colors.black} size={20} />
+          ),
+          tabBarButton: (props) => (
+            <TabBarCustomButton {...props} label="Profile" />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+    // {/* </View> */}
+  );
+};
+
+export default Tabs;
 
 const styles = StyleSheet.create({
+  tabBarContainer: {
+    backgroundColor: "red",
+  },
   container: {
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    height: height * 0.08,
+    height: height * 0.1,
     width: width * 0.9,
     backgroundColor: Colors.white,
     borderRadius: 20,
@@ -115,7 +187,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 8,
+    paddingVertical: 20,
     paddingHorizontal: 12,
     borderRadius: 12,
   },
@@ -127,14 +199,19 @@ const styles = StyleSheet.create({
   },
   buttonContent: {
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "center",
-    gap: 8,
+    alignItems: "center",
+    marginHorizontal: 10,
   },
   buttonText: {
     color: Colors.black,
     fontSize: 14,
     fontWeight: "bold",
-    marginLeft: 5,
+    marginLeft: 20,
+  },
+  centeredIconContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
