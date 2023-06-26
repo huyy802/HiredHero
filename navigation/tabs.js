@@ -22,7 +22,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CustomBottomNavigation from '../custom component/CustomBottomNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import CompanyScreen from '../screens/companies';
-
+import ProfileScreen from '../screens/profile/ProfileScreen';
+import BookmarkScreen from '../screens/bookmark/BookmarkScreen';
 const Tab = createBottomTabNavigator();
 
 
@@ -39,9 +40,12 @@ const Tabs = ({route, navigation}) => {
 
     return(
         <Tab.Navigator tabBar={props => <CustomBottomNavigation {...props} selectedTab={selectedTab}/>}>
-            <Tab.Screen  options={{ headerShown: false }} name="Home" component={HomeScreen} />
-            <Tab.Screen  options={{ headerShown: false }} name="Application" component={ApplicationScreen} />
+            <Tab.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
+            <Tab.Screen options={{ headerShown: false }} name="Application" component={ApplicationScreen} />
             <Tab.Screen options={{headerShown: false}} name='Company' component={CompanyScreen}/>
+            <Tab.Screen options={{headerShown: false}} name='Profile' component={ProfileScreen}/>
+            <Tab.Screen options={{headerShown: false}} name='Bookmark' component={BookmarkScreen}/>
+
         </Tab.Navigator>
     )
     

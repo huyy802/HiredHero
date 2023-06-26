@@ -60,9 +60,9 @@ const ProfileScreen = ({ navigation }) => {
             <Text style={styles.aboutMeText}>{bio}</Text>
           </View>
         </View>
-        <View style={styles.bottomNavigationContainer}>
+        {/* <View style={styles.bottomNavigationContainer}>
           <CustomBottomNavigation />
-        </View>
+        </View> */}
       </View>
     </SafeAreaView>
   );
