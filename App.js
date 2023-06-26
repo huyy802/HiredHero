@@ -27,7 +27,8 @@ import ProfileScreen from "./screens/profile/ProfileScreen";
 import HomeScreen from "./screens/home/HomeScreen";
 import JobDetailScreen from "./screens/jobdetail";
 import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
-import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
+import TabForUser from "./custom component/CustomBottomNavigation";
+
 const Stack = createStackNavigator();
 
 const config = {
@@ -105,6 +106,11 @@ function Navigation() {
           name="LoginScreen"
           component={LoginScreen}
         /> */}
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="TabForUser"
+          component={TabForUser}
+        />
         <Stack.Screen
           options={{ headerShown: false }}
           name="HomeScreen"

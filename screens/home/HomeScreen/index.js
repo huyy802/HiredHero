@@ -162,9 +162,7 @@ const HomeScreen = ({ navigation }) => {
           />
         )}
       />
-      <View style={styles.bottomNavigationContainer}>
-        <CustomBottomNavigation />
-      </View>
+     
     </SafeAreaView>
   );
 };

@@ -134,9 +134,7 @@ const BookmarkScreen = ({ navigation }) => {
           )}
         />
       )}
-      <View style={styles.bottomNavigationContainer}>
-        <CustomBottomNavigation />
-      </View>
+    
     </SafeAreaView>
   );
 };
