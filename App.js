@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Easing,
   LogBox,
@@ -26,7 +26,15 @@ import CustomerScreen from "./screens/customer/index";
 import ProfileScreen from "./screens/profile/ProfileScreen";
 import HomeScreen from "./screens/home/HomeScreen";
 import JobDetailScreen from "./screens/jobdetail";
-import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
+import ApplicationScreen from "./screens/applications";
+import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
+import Tabs from "./navigation/tabs";
+import ApplicationDetailScreen from "./screens/applicationsdetail";
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
+import CompanyDetailScreen from "./screens/companydetail";
+
+import BookmarScreen from "./screens/bookmark/BookmarkScreen";
 import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
 const Stack = createStackNavigator();
 
@@ -93,20 +101,24 @@ function Navigation() {
   const state = useSelector((state) => state);
   console.log("current state", state);
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          gestureEnabled: true,
-          gestureDirection: "horizontal",
-        }}
-      >
-        {/* <Stack.Screen
-          options={{ headerShown: false }}
-          name="LoginScreen"
-          component={LoginScreen}
-        /> */}
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="HomeScreen"
+          screenOptions={{
+            gestureEnabled: true,
+            gestureDirection: "horizontal",
+          }}
+        >
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="HomeScreen"
+            component={Tabs}
+           
+          />
+        
         <Stack.Screen
           options={{ headerShown: false }}
+
           name="HomeScreen"
           component={HomeScreen}
         />
@@ -122,22 +134,24 @@ function Navigation() {
         />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="JobDetailScreen"
-          component={JobDetailScreen}
+          name="ApplicationDetailScreen"
+          component={ApplicationDetailScreen}
         />
 
         {/* <Stack.Screen
+>>>>>>> 5d5b16b8dc7456a000b207ba199f7c8480dd6379
           options={{ headerShown: false }}
-          name="SplashScreen"
-          component={SplashScreen}
+          name="JobDetailScreen"
+          component={JobDetailScreen}
         />
         <Stack.Screen
           options={{ headerShown: false }}
           name="OnBoardingScreen"
           component={OnBoardingScreen}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           options={{ headerShown: false }}
+
           name="CustomerScreen"
           component={CustomerScreen}
         /> */}
@@ -175,7 +189,17 @@ function LoadingAnimation() {
   );
 }
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
+
 export default function App() {
+ 
   return (
     <Provider store={store}>
       <Navigation />

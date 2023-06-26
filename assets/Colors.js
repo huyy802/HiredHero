@@ -14,6 +14,9 @@ export default {
   black: "0xFF000000",
   lightBlack:"#2C3A4B",
   lightBlue:"#F4F6F9",
+  red: "#C90000",
+  blue: "#0057FF",
+
   backgroundColor: "#F5F5F5",
 
   white: "#FFFFFF",
