@@ -35,24 +35,31 @@ const CustomBottomNavigation = () => {
   const navigation = useNavigation();
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
-    if (buttonName === "Home") {
-      navigation.navigate("HomeScreen");
-    } else if (buttonName === "Bookmark") {
-      navigation.navigate("BookmarkScreen");
-    } else if (buttonName === "Profile") {
-      navigation.navigate("ProfileScreen");
-    }
-  };
+    navigation.navigate(buttonName)
 
+    // if (buttonName === "Home") {
+    //   navigation.navigate("HomeScreen");
+    // } else if (buttonName === "Bookmark") {
+    //   navigation.navigate("BookmarkScreen");
+    // } else if (buttonName === "Profile") {
+    //   navigation.navigate("ProfileScreen");
+    // }
+  };
   useState(() => {
-    setActiveButton(
-      routeName == "HomeScreen"
-        ? "Home"
-        : routeName == "BookmarkScreen"
-        ? "Bookmark"
-        : "Profile"
-    );
-  }, [routeName]);
+      setActiveButton(
+        routeName
+      );
+    }, [routeName]);
+
+  // useState(() => {
+  //   setActiveButton(
+  //     routeName == "HomeScreen"
+  //       ? "Home"
+  //       : routeName == "BookmarkScreen"
+  //       ? "Bookmark"
+  //       : "Profile"
+  //   );
+  // }, [routeName]);
 
   const renderButton = (buttonName, buttonIcon) => {
     const isActive = activeButton === buttonName;
@@ -79,8 +86,9 @@ const CustomBottomNavigation = () => {
 
     <View style={styles.container}>
       {renderButton("Home", faHome)}
-      {renderButton("Job", faBriefcase)}
+      {renderButton("Application", faBriefcase)}
       {renderButton("Bookmark", faBookBookmark)}
+      {renderButton("Company", faBuilding)}
       {renderButton("Profile", faUser)}
     </View>
    

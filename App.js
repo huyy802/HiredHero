@@ -27,14 +27,13 @@ import ProfileScreen from "./screens/profile/ProfileScreen";
 import HomeScreen from "./screens/home/HomeScreen";
 import JobDetailScreen from "./screens/jobdetail";
 import ApplicationScreen from "./screens/applications";
-import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
 import Tabs from "./navigation/tabs";
 import ApplicationDetailScreen from "./screens/applicationsdetail";
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import CompanyDetailScreen from "./screens/companydetail";
 
-import BookmarScreen from "./screens/bookmark/BookmarkScreen";
+import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
 import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
 const Stack = createStackNavigator();
 
@@ -115,13 +114,10 @@ function Navigation() {
             component={Tabs}
            
           />
-        
         <Stack.Screen
-          options={{ headerShown: false }}
-
-          name="HomeScreen"
-          component={HomeScreen}
-        />
+          options={{headerShown: false}}
+          name="CompanyDetailScreen"
+          component={CompanyDetailScreen}/>
         <Stack.Screen
           options={{ headerShown: false }}
           name="ProfileScreen"
@@ -138,8 +134,7 @@ function Navigation() {
           component={ApplicationDetailScreen}
         />
 
-        {/* <Stack.Screen
->>>>>>> 5d5b16b8dc7456a000b207ba199f7c8480dd6379
+        <Stack.Screen
           options={{ headerShown: false }}
           name="JobDetailScreen"
           component={JobDetailScreen}
@@ -151,10 +146,9 @@ function Navigation() {
         />
         <Stack.Screen
           options={{ headerShown: false }}
-
           name="CustomerScreen"
           component={CustomerScreen}
-        /> */}
+        /> 
       </Stack.Navigator>
     </NavigationContainer>
   );
