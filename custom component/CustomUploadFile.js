@@ -10,10 +10,11 @@ export default CustomUploadFile = (props) => {
     
     const pickDocument = async () => {
         try {
-            let result = await DocumentPicker.getDocumentAsync({ type: 'application/pdf' });
+            let result = await DocumentPicker.getDocumentAsync({ type: '*/*' });
             console.log(result.uri);
             if (result.type === 'success') {
                 setSelectedFile(result)
+                console.log(result)
             }
           } catch (error) {
             console.log('Error picking document:', error);

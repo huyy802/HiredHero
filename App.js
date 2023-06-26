@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Easing,
   LogBox,
@@ -26,6 +26,13 @@ import CustomerScreen from "./screens/customer/index";
 import ProfileScreen from "./screens/profile/ProfileScreen";
 import HomeScreen from "./screens/home/HomeScreen";
 import JobDetailScreen from "./screens/jobdetail";
+import ApplicationScreen from "./screens/applications";
+import Tabs from "./navigation/tabs";
+import ApplicationDetailScreen from "./screens/applicationsdetail";
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
+import CompanyDetailScreen from "./screens/companydetail";
+
 import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
 import TabForUser from "./custom component/CustomBottomNavigation";
 
@@ -128,25 +135,25 @@ function Navigation() {
         />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="JobDetailScreen"
-          component={JobDetailScreen}
+          name="ApplicationDetailScreen"
+          component={ApplicationDetailScreen}
         />
 
-        {/* <Stack.Screen
+        <Stack.Screen
           options={{ headerShown: false }}
-          name="SplashScreen"
-          component={SplashScreen}
+          name="JobDetailScreen"
+          component={JobDetailScreen}
         />
         <Stack.Screen
           options={{ headerShown: false }}
           name="OnBoardingScreen"
           component={OnBoardingScreen}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           options={{ headerShown: false }}
           name="CustomerScreen"
           component={CustomerScreen}
-        /> */}
+        /> 
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -181,7 +188,17 @@ function LoadingAnimation() {
   );
 }
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
+
 export default function App() {
+ 
   return (
     <Provider store={store}>
       <Navigation />

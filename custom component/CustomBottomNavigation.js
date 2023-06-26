@@ -178,9 +178,11 @@ const styles = StyleSheet.create({
     width: width * 0.9,
     backgroundColor: Colors.white,
     borderRadius: 20,
-    marginBottom: 15,
+    marginBottom: 10,
+    marginTop:10,
     paddingHorizontal: 10,
     elevation: 20,
+    alignSelf: "center",
   },
   buttonContainer: {
     justifyContent: "center",

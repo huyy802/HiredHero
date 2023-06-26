@@ -36,7 +36,7 @@ const HomeScreen = ({ navigation }) => {
   };
   const getData = () => {
     dispatch(
-      getAPIActionJSON("getAllJobs", null, null, "", (e) => handleResponse(e))
+      getAPIActionJSON("getAllJobsNonExpired", null, null, "", (e) => handleResponse(e))
     );
   };
   const handleResponseGetBookmark = (response) => {
