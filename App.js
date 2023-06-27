@@ -32,6 +32,7 @@ import ApplicationDetailScreen from "./screens/applicationsdetail";
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import CompanyDetailScreen from "./screens/companydetail";
+import JobPostScreen from "./screens/jobpost"
 
 import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
 import TabForUser from "./custom component/CustomBottomNavigation";
@@ -101,18 +102,27 @@ function Navigation() {
   const state = useSelector((state) => state);
   console.log("current state", state);
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          gestureEnabled: true,
-          gestureDirection: "horizontal",
-        }}
-      >
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="HomeScreen"
+          screenOptions={{
+            gestureEnabled: true,
+            gestureDirection: "horizontal",
+          }}
+        >
+        <Stack.Screen
+            options={{ headerShown: false }}
+            name="JobPostScreen"
+            component={JobPostScreen}
+           
+          />
+
         {/* <Stack.Screen
           options={{ headerShown: false }}
           name="LoginScreen"
           component={LoginScreen}
         /> */}
+
         <Stack.Screen
           options={{ headerShown: false }}
           name="TabForUser"
