@@ -1,8 +1,8 @@
 import { getAPIs } from "./Apis";
 import customAxios from "./AxiosInterceptors";
 
-// const host = "https://hiredhero.onrender.com";
-const host = "https://5215-123-21-33-87.ngrok-free.app";
+
+const host = "https://9509-115-78-8-83.ngrok-free.app";
 
 export function getAPIActionJSON(
   type,
@@ -67,4 +67,46 @@ export async function getStatelessAPI(
       console.log(error);
     }
   }
+}
+export function getAPIActionJSONWithFormData(
+  type,
+  data,
+  params = "",
+  addparams = "",
+  onSuccess = () => {},
+  onError = () => {}
+) {
+  const api = getAPIs[type];
+
+  return (dispatch, getState) => {
+    dispatch({ type: "loading.start" });
+    customAxios({
+      method: api.method, //POST
+      url: host + api.path + addparams,
+      params: params,
+      data: data,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data", // Set the content type to 'multipart/form-data'
+      },
+    })
+      .then(function (response) {
+        dispatch({ type: "loading.success" });
+
+        console.log(type, response.data);
+        if (response.status === 200) {
+          dispatch({
+            type: `${type}.reply`, /// loginUser.reply
+            data: response.data,
+            headers: response.headers,
+          });
+        }
+        onSuccess(response.data);
+      })
+      .catch((e) => {
+        dispatch({ type: "loading.success" });
+        onError(e);
+        console.log(e);
+      });
+  };
 }

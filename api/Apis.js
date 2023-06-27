@@ -72,5 +72,10 @@ export const getAPIs = {
     name: "createPost",
     path: "/api/post/createPost",
     method: "POST",
-  }
+  },
+  createApply: {
+    name: "createApply",
+    path: "api/apply/createApply",
+    method: "POST",
+  },
 };
