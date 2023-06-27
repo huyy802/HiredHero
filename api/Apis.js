@@ -60,4 +60,17 @@ export const getAPIs = {
     path: "/api/bookmark/getAllBookmarksOfUser",
     method: "GET",
   },
+
+  //post
+  getAllPosts: {
+    name: "getAllPosts",
+    path: "/api/post/getAllPosts",
+    method: "GET",
+  },
+
+  createPost:{
+    name: "createPost",
+    path: "/api/post/createPost",
+    method: "POST",
+  }
 };

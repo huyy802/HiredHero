@@ -32,6 +32,7 @@ import ApplicationDetailScreen from "./screens/applicationsdetail";
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import CompanyDetailScreen from "./screens/companydetail";
+import JobPostScreen from "./screens/jobpost"
 
 import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
 import CustomBottomNavigation from "./custom component/CustomBottomNavigation";
@@ -108,7 +109,13 @@ function Navigation() {
             gestureDirection: "horizontal",
           }}
         >
-          <Stack.Screen
+        <Stack.Screen
+            options={{ headerShown: false }}
+            name="JobPostScreen"
+            component={JobPostScreen}
+           
+          />
+          {/* <Stack.Screen
             options={{ headerShown: false }}
             name="HomeScreen"
             component={Tabs}
@@ -148,7 +155,7 @@ function Navigation() {
           options={{ headerShown: false }}
           name="CustomerScreen"
           component={CustomerScreen}
-        /> 
+        />  */}
       </Stack.Navigator>
     </NavigationContainer>
   );
