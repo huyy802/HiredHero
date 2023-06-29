@@ -42,6 +42,23 @@ export const getAPIs = {
     path: "/api/apply/createApply/",
     method: "POST",
   },
+  getAllAppliesFromHR: {
+    name: "getAllAppliesFromHR",
+    path: "/api/apply/getAllAppliesFromHR",
+    method: "GET",
+  },
+  getFilterAppliesFromHR:{
+    name: "getFilterAppliesFromHR",
+    path: "/api/apply/getFilterAppliesFromHR",
+    method: "GET",
+  },
+  
+  updateApplyStatus: {
+    name:"updateApplyStatus",
+    path: "/api/apply/updateApplyStatus",
+    method: "PUT"
+  },
+
   //company
   getAllCompanies: {
     name: "getAllCompanies",

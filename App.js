@@ -33,9 +33,10 @@ import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import CompanyDetailScreen from "./screens/companydetail";
 import JobPostScreen from "./screens/jobpost"
-
+import ApplicationManagerScreen from "./screens/applicationmanager";
 import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
 import TabForUser from "./custom component/CustomBottomNavigation";
+import ApplicationManagerDetailScreen from "./screens/applicationmanagerdetail";
 
 const Stack = createStackNavigator();
 
@@ -110,12 +111,22 @@ function Navigation() {
             gestureDirection: "horizontal",
           }}
         >
-        <Stack.Screen
+        
+         <Stack.Screen
+            options={{ headerShown: false }}
+            name="ApplicationManagerScreen"
+            component={ApplicationManagerScreen}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="ApplicationManagerDetailScreen"
+            component={ApplicationManagerDetailScreen}
+          />
+        {/* <Stack.Screen
             options={{ headerShown: false }}
             name="JobPostScreen"
             component={JobPostScreen}
-           
-          />
+          /> */}
 
         {/* <Stack.Screen
           options={{ headerShown: false }}
@@ -123,7 +134,7 @@ function Navigation() {
           component={LoginScreen}
         /> */}
 
-        <Stack.Screen
+        {/* <Stack.Screen
           options={{ headerShown: false }}
           name="TabForUser"
           component={TabForUser}
@@ -163,7 +174,7 @@ function Navigation() {
           options={{ headerShown: false }}
           name="CustomerScreen"
           component={CustomerScreen}
-        /> 
+        />  */}
       </Stack.Navigator>
     </NavigationContainer>
   );

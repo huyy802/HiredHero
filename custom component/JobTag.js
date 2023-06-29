@@ -9,8 +9,8 @@ const JobTag = (props) => {
                   }}>
 
                 <View style={{flexDirection:"row"}}>
-                    <View style={{borderRadius: 5, height: 60, width: 60}}>
-                        <Image resizeMode="cover"
+                    <View>
+                        <Image resizeMode="cover"  style={{borderRadius: 5, height: 60, width: 60}}
                             source={props.logo}/>
                     </View>
                     <View style={{marginStart: 20, height: 60}}>
