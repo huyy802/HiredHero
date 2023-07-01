@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 
-const CustomJobCard = ({
+const CustomJobCardInPost = ({
   onPress,
   nameJob,
   companyName,
@@ -32,23 +39,19 @@ const CustomJobCard = ({
           <Text style={styles.type}>{type}</Text>
         </View>
       </View>
-      <View style={styles.actionContainer}>
-        <Text style={styles.salary}>${salary}</Text>
-      </View>
     </TouchableOpacity>
   );
 };
-
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
     padding: 16,
-    paddingLeft: 20,
-    paddingRight: 28,
-    gap: 12,
-    width: 380,
-    height: 92,
+
+    width: width * 0.82,
+    height: height * 0.1,
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
     borderColor: "#F3F3F4",
@@ -96,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomJobCard;
+export default CustomJobCardInPost;

@@ -1,4 +1,9 @@
 export const getAPIs = {
+  getAllPosts: {
+    name: "getAllPosts",
+    path: "/api/post/getAllPosts",
+    method: "GET",
+  },
   loginUser: {
     name: "loginUser",
     path: "/api/auth/loginUser",
@@ -54,7 +59,7 @@ export const getAPIs = {
     path: "/api/file/upload",
     method: "POST",
   },
- 
+
   getAllBookmarksOfUser: {
     name: "getAllBookmarksOfUser",
     path: "/api/bookmark/getAllBookmarksOfUser",
@@ -68,7 +73,7 @@ export const getAPIs = {
     method: "GET",
   },
 
-  createPost:{
+  createPost: {
     name: "createPost",
     path: "/api/post/createPost",
     method: "POST",
