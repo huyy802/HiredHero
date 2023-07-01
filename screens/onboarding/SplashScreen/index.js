@@ -41,9 +41,9 @@ const SplashScreen = ({ navigation }) => {
           /> */}
           <LottieView
             style={{
-              width: 300,
+              width: 280,
               height: 200,
-              marginTop: "60%",
+              marginTop: "50%",
               alignSelf: "center",
             }}
             source={require("../../../assets/json/loading%.json")}

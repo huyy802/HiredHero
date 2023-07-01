@@ -1,5 +1,5 @@
 const initialState = {
-  id: "646f7e91d8319469c198f606",
+  id: "",
   name: "",
   email: "",
   phoneNumber: "",
@@ -47,10 +47,6 @@ export default function UserReducer(state = initialState, action) {
         };
       }
     case "getAllBookmarksOfUser.reply":
-      console.log("getAllBookmarksOfUser ne ", action.data.success);
-      console.log("data ne ", action.data.data);
-      console.log("job ne ", action.data.data.job);
-
       if (action.data.success === true) {
         return {
           ...state,
