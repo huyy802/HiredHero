@@ -10,9 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
   faHome,
   faUser,
-  faBookBookmark,
+  faFile,
   faBriefcase,
-  faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 import Colors from "../assets/Colors";
 
@@ -25,8 +24,7 @@ const width = Dimensions.get("window").width;
 const Tab = createBottomTabNavigator();
 import Svg, { Path } from "react-native-svg";
 import HomeScreen from "../screens/home/HomeScreen";
-import BookmarkScreen from "../screens/bookmark/BookmarkScreen";
-import CompanyScreen from "../screens/companies";
+import ApplicationScreen from "../screens/applications";
 import ProfileScreen from "../screens/profile/ProfileScreen";
 import { useSelector } from "react-redux";
 import NewsfeedScreen from "../screens/newsfeed/NewsfeedScreen";
@@ -137,28 +135,13 @@ const Tabs = () => {
           ),
         }}
       />
+
       <Tab.Screen
-        name="CompanyScreen"
-        component={CompanyScreen}
+        name="Application"
+        component={ApplicationScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <FontAwesomeIcon icon={faBuilding} color={Colors.black} size={20} />
-          ),
-          tabBarButton: (props) => (
-            <TabBarCustomButton {...props} label="Company" />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Bookmark"
-        component={BookmarkScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <FontAwesomeIcon
-              icon={faBookBookmark}
-              color={Colors.black}
-              size={20}
-            />
+            <FontAwesomeIcon icon={faFile} color={Colors.black} size={20} />
           ),
           tabBarButton: (props) => (
             <TabBarCustomButton {...props} label="Bookmark" />
@@ -221,12 +204,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 10,
-    marginVertical: 10,
   },
   buttonText: {
     color: Colors.black,
     fontSize: 14,
     fontWeight: "bold",
+    marginLeft: 20,
   },
   centeredIconContainer: {
     flex: 1,

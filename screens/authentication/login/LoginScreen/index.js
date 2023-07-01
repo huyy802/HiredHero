@@ -48,12 +48,22 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   const handleResponse = (response) => {
+    console.log("response ne: ", response);
     if (!response.success) {
       Alert.alert(response.message);
       console.log(response.message);
       return;
     }
-    navigation.navigate("HomeScreen");
+    console.log(response.data.userType);
+    // navigation.navigate("HomeScreen");
+    if (response.data.userType === "jobseeker") {
+      console.log("oke nhe");
+      navigation.navigate("TabForUser");
+    }
+    if (response.data.userType === "employer") {
+      console.log("oke nhe");
+      navigation.navigate("TabForHR");
+    }
   };
 
   const handleLogin = async () => {
@@ -67,7 +77,11 @@ const LoginScreen = () => {
         },
         null,
         "",
-        (e) => handleResponse(e)
+        (e) => {
+          console.log("loi cmnr");
+
+          handleResponse(e);
+        }
       )
     );
   };

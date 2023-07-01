@@ -29,15 +29,23 @@ import JobDetailScreen from "./screens/jobdetail";
 import ApplicationScreen from "./screens/applications";
 import Tabs from "./navigation/tabs";
 import ApplicationDetailScreen from "./screens/applicationsdetail";
-import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
+import * as Notifications from "expo-notifications";
+import * as Permissions from "expo-permissions";
 import CompanyDetailScreen from "./screens/companydetail";
 import JobPostScreen from "./screens/jobpost"
 import ApplicationManagerScreen from "./screens/applicationmanager";
 import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
 import TabForUser from "./custom component/CustomBottomNavigation";
 import ApplicationManagerDetailScreen from "./screens/applicationmanagerdetail";
+import JobPostScreen from "./screens/jobpost";
+import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
+import TabForUser from "./custom component/CustomBottomNavigation";
+import TabForHR from "./custom component/CustomBottomNavigationForHR";
 
+import DetailPostScreen from "./screens/newsfeed/DetailPostScreen";
+import RolePickerScreen from "./screens/authentication/RolePickerScreen";
+import SignupScreenForJobSeeker from "./screens/authentication/SignUpScreenForJobSeeker";
+import CompanyScreen from "./screens/companies";
 const Stack = createStackNavigator();
 
 const config = {
@@ -103,42 +111,50 @@ function Navigation() {
   const state = useSelector((state) => state);
   console.log("current state", state);
   return (
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="HomeScreen"
-          screenOptions={{
-            gestureEnabled: true,
-            gestureDirection: "horizontal",
-          }}
-        >
-        
-         <Stack.Screen
-            options={{ headerShown: false }}
-            name="ApplicationManagerScreen"
-            component={ApplicationManagerScreen}
-          />
-          <Stack.Screen
-            options={{ headerShown: false }}
-            name="ApplicationManagerDetailScreen"
-            component={ApplicationManagerDetailScreen}
-          />
-        {/* <Stack.Screen
-            options={{ headerShown: false }}
-            name="JobPostScreen"
-            component={JobPostScreen}
-          /> */}
-
-        {/* <Stack.Screen
+    <NavigationContainer>
+      <Stack.Navigator
+        // initialRouteName="HomeScreen"
+        screenOptions={{
+          gestureEnabled: true,
+          gestureDirection: "horizontal",
+        }}
+      >
+        <Stack.Screen
           options={{ headerShown: false }}
           name="LoginScreen"
           component={LoginScreen}
-        /> */}
-
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="SplashScreen"
+          component={SplashScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="OnBoardingScreen"
+          component={OnBoardingScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="RolePickerScreen"
+          component={RolePickerScreen}
+        />
+        <Stack.Screen
           options={{ headerShown: false }}
           name="TabForUser"
           component={TabForUser}
         />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="TabForHR"
+          component={TabForHR}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="JobPostScreen"
+          component={JobPostScreen}
+        />
+
         <Stack.Screen
           options={{ headerShown: false }}
           name="HomeScreen"
@@ -154,11 +170,6 @@ function Navigation() {
           name="BookmarkScreen"
           component={BookmarkScreen}
         />
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="ApplicationDetailScreen"
-          component={ApplicationDetailScreen}
-        />
 
         <Stack.Screen
           options={{ headerShown: false }}
@@ -167,14 +178,39 @@ function Navigation() {
         />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="OnBoardingScreen"
-          component={OnBoardingScreen}
+          name="CustomerScreen"
+          component={CustomerScreen}
         />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="CustomerScreen"
-          component={CustomerScreen}
-        />  */}
+          name="DetailPostScreen"
+          component={DetailPostScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="SignupScreenForJobSeeker"
+          component={SignupScreenForJobSeeker}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="CompanyDetailScreen"
+          component={CompanyDetailScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="CompanyScreen"
+          component={CompanyScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="ApplicationDetailScreen"
+          component={ApplicationDetailScreen}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="ApplicationScreen"
+          component={ApplicationScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -217,9 +253,7 @@ Notifications.setNotificationHandler({
   }),
 });
 
-
 export default function App() {
- 
   return (
     <Provider store={store}>
       <Navigation />

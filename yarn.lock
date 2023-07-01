@@ -9239,7 +9239,11 @@ react-native-collapsible@^1.6.0:
 
 react-native-datepicker@^1.7.2:
   version "1.7.2"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/react-native-datepicker/-/react-native-datepicker-1.7.2.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/react-native-datepicker/-/react-native-datepicker-1.7.2.tgz#58d0822591a0ac9b32aba082650222a0ee29669d"
+>>>>>>> 096f582047cd4473ebe09749f849aaf5c32da11d
   integrity sha512-ses0N1y44fYBmlejYwR2i+dGnQQ8v5/gacX2CrbFJiWxbcQaRuxexsZPB9YQuQkAy+uKz5Gti3Lrp3dh9BfkzA==
   dependencies:
     moment "^2.22.0"

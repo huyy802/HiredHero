@@ -1,8 +1,9 @@
+import { Alert } from "react-native";
 import { getAPIs } from "./Apis";
 import customAxios from "./AxiosInterceptors";
 
 
-const host = "https://0834-113-161-77-200.ngrok-free.app";
+const host = "https://ab77-118-69-158-111.ngrok-free.app";
 
 export function getAPIActionJSON(
   type,
@@ -24,6 +25,7 @@ export function getAPIActionJSON(
     })
       .then(function (response) {
         dispatch({ type: "loading.success" });
+        console.log("response truoc");
 
         console.log(type, response.data);
         if (response.status === 200) {
@@ -38,6 +40,8 @@ export function getAPIActionJSON(
       .catch((e) => {
         dispatch({ type: "loading.success" });
         onError(e);
+        console.log(e.response.data.message);
+        Alert.alert("Error", e.response.data.message);
         console.log(e);
       });
   };
@@ -92,7 +96,7 @@ export function getAPIActionJSONWithFormData(
     })
       .then(function (response) {
         dispatch({ type: "loading.success" });
-
+        console.log("response truoc");
         console.log(type, response.data);
         if (response.status === 200) {
           dispatch({
@@ -106,6 +110,7 @@ export function getAPIActionJSONWithFormData(
       .catch((e) => {
         dispatch({ type: "loading.success" });
         onError(e);
+        console.log("co loi r");
         console.log(e);
       });
   };
