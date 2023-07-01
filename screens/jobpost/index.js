@@ -172,7 +172,7 @@ const JobPostScreen = (pros) => {
                     style={styles.modalCloseButton}
                     onPress={() => setModalVisible(false)}
                     >
-                    <Text style={styles.modalCloseButtonText}>Close</Text>
+                    <Text style={{color:Colors.white, fontSize: 18, fontWeight: "600"}}>Close</Text>
                 </TouchableOpacity>
             </Modal>
             {
@@ -292,14 +292,13 @@ const styles = StyleSheet.create({
       },
       modalCloseButton:{
         position: 'absolute',
-        bottom: 10,
-        left: 10,
-        width: 100,
+        bottom: 0,
+        width: "100%",
         padding: 10,
-        borderRadius: 15,
+      
         alignItems: 'center',
-        backgroundColor: Colors.white,
-        textColor: Colors.DarkOrange,
+        backgroundColor: Colors.red,
+        color: Colors.white,
       },
       createButton:{
         borderRadius: 30,

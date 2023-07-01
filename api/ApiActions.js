@@ -2,6 +2,7 @@ import { Alert } from "react-native";
 import { getAPIs } from "./Apis";
 import customAxios from "./AxiosInterceptors";
 
+
 const host = "https://ab77-118-69-158-111.ngrok-free.app";
 
 export function getAPIActionJSON(

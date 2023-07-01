@@ -32,6 +32,11 @@ import ApplicationDetailScreen from "./screens/applicationsdetail";
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 import CompanyDetailScreen from "./screens/companydetail";
+import JobPostScreen from "./screens/jobpost"
+import ApplicationManagerScreen from "./screens/applicationmanager";
+import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
+import TabForUser from "./custom component/CustomBottomNavigation";
+import ApplicationManagerDetailScreen from "./screens/applicationmanagerdetail";
 import JobPostScreen from "./screens/jobpost";
 import BookmarkScreen from "./screens/bookmark/BookmarkScreen";
 import TabForUser from "./custom component/CustomBottomNavigation";

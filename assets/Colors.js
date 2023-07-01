@@ -11,6 +11,7 @@ export default {
   BarbiePink: "#E01D89",
   RosePink: "#FC69CD",
   lightGray: "#D3D3D3",
+  light: "#F2F2F2",
   black: "0xFF000000",
   lightBlack:"#2C3A4B",
   lightBlue:"#F4F6F9",
